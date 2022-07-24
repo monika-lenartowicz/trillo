@@ -53,4 +53,7 @@
 
 .user-reviews {
 	flex: 1; //pozostałe miejsce p0 60% wyżej(rośnie na całą pozostałą szerokość)
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
