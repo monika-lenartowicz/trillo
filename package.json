@@ -9,11 +9,16 @@
 		"start": "npm-run-all --parallel devserver watch:sass",
 		"compile:sass": "sass sass/main.scss css/style.comp.css",
 		"prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.comp.css -o css/style.prefix.css",
-		"compress:css": "sass css/style.prefix.css css/style.css --output-style compressed",
+		"compress:css": "sass --style=compressed css/style.prefix.css css/style.css",
 		"build:css": "npm-run-all compile:sass  prefix:css compress:css"
+	},
+	"repository": {
+		"type": "git",
+		"url": ".git"
 	},
 	"author": "Jonas",
 	"license": "ISC",
+	"browserslist": "last 10 versions",
 	"devDependencies": {
 		"autoprefixer": "^10.4.7",
 		"concat": "^1.0.3",
