@@ -9,6 +9,12 @@
 	justify-content: center;
 	align-items: center;
 
+	@media only screen and (max-width: $bp-smallest) {
+		order: 1;
+		flex: 0 0 100%;
+		background-color: var(--color-grey-light-2);
+	}
+
 	&__input {
 		border-radius: 100px;
 		font-family: inherit;
@@ -143,6 +149,7 @@
 		left: 0;
 		height: 100%;
 		width: 3px;
+
 		background-color: var(--color-primary);
 		transform: scaleY(0);
 		transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s; // trzecia pozycja to opóźnienie
@@ -171,6 +178,11 @@
 			justify-content: center;
 			padding: 2rem;
 		}
+
+		@media only screen and (max-width: $bp-small) {
+			flex-direction: column;
+			padding: 1.5rem 0.5rem;
+		}
 	}
 
 	&__link:active {
@@ -182,6 +194,13 @@
 		height: 1.75rem;
 		fill: currentColor;
 		margin-right: 2rem;
+
+		@media only screen and (max-width: $bp-small) {
+			margin-right: 0;
+			margin-bottom: 0.7rem;
+			width: 1.5rem;
+			height: 1.5rem;
+		}
 	}
 }
 
@@ -222,6 +241,11 @@
 		text-transform: uppercase;
 		letter-spacing: 1px;
 		padding: 1.5rem 3rem;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: 1.8rem;
+			padding: 1.25rem 2rem;
+		}
 	}
 
 	&__stars {
@@ -256,19 +280,32 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+
+		@media only screen and (max-width: $bp-small) {
+			padding: 0 1.5rem;
+		}
 	}
 
 	&__rating-average {
 		font-size: 2.25rem;
 		font-weight: 300;
 		margin-bottom: -3px;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: 1.8rem;
+		}
 	}
 
 	&__rating-count {
 		font-size: 0.8rem;
 		text-transform: uppercase;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: 0.5rem;
+		}
 	}
 }
+
 //BUTTON INLINE
 .button-inline {
 	border: none;
@@ -343,14 +380,19 @@
 		height: 1rem;
 		margin-right: 0.7rem;
 
-		// background-image: url(../img/SVG/chevron-thin-right.svg);
-		// background-size: cover;
+		//older browsers
+		background-image: url(../img/SVG/chevron-thin-right.svg);
+		background-size: cover;
 
-		background-color: var(--color-primary);
-		mask-image: url(../img/SVG/chevron-thin-right.svg);
-		-webkit-mask-image: url(../img/SVG/chevron-thin-right.svg);
-		mask-size: cover;
-		-webkit-mask-size: cover;
+		//newer browsers
+		@supports (-webkit-mask-image: url()) or (mask-image: url()) {
+			background-color: var(--color-primary);
+			mask-image: url(../img/SVG/chevron-thin-right.svg);
+			-webkit-mask-image: url(../img/SVG/chevron-thin-right.svg);
+			mask-size: cover;
+			-webkit-mask-size: cover;
+			background-image: none;
+		}
 	}
 }
 
